@@ -1,6 +1,6 @@
 <?php
-require_once 'config.php';
-require_once 'functions.php';
+require_once 'includes/config.php';
+require_once 'includes/functions.php';
 redirect_if_not_logged_in();
 
 $user_id = $_SESSION['user_id'];
@@ -36,7 +36,7 @@ if (isset($_GET['delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iklan Saya - OLX Clone</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require_once __DIR__ . '/config.php';
 
 function is_logged_in() {
     return isset($_SESSION['user_id']);

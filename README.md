@@ -28,7 +28,7 @@ Tanpa framework, 100% vanilla PHP/HTML/CSS/JS.
 
 ## Database
 
-**4 tabel** (InnoDB, auto-created oleh `config.php`):
+**4 tabel** (InnoDB, auto-created oleh `includes/config.php`):
 
 | Tabel | Keterangan |
 |-------|-----------|
@@ -49,7 +49,7 @@ Relasi: 1 user memiliki banyak iklan, 1 kategori memiliki banyak iklan, 1 iklan 
 ### Langkah
 1. Letakkan folder ini di `C:\laragon\www\` atau `C:\xampp\htdocs\`
 2. **(Otomatis)** Cukup akses `http://localhost/OLX_Clone` — database & tabel dibuat otomatis
-3. **(Manual)** Alternatif: import `olx_clone.sql` ke phpMyAdmin
+3. **(Manual)** Alternatif: import `sql/olx_clone.sql` ke phpMyAdmin
 4. Pastikan folder `uploads/` memiliki izin tulis
 5. Akses `http://localhost/OLX_Clone`
 
@@ -71,23 +71,26 @@ Membuat 5 user & 20 iklan contoh. Semua password: `password123`
 
 ```
 OLX_Clone/
-├── config.php           # Konfigurasi DB & auto-create schema
-├── functions.php        # Helper functions
-├── index.php            # Halaman utama
-├── login.php            # Login
-├── register.php         # Registrasi
-├── logout.php           # Logout
-├── create_ad.php        # Pasang iklan
-├── edit_ad.php          # Edit iklan
-├── detail.php           # Detail iklan
-├── myads.php            # Dashboard iklan saya
-├── seeder.php           # Seeder data dummy
-├── style.css            # Semua styling (CSS)
+├── assets/
+│   └── css/
+│       └── style.css         # Semua styling (CSS)
 ├── includes/
-│   └── header.php       # Navigasi & search bar
-├── uploads/             # Folder upload gambar
-├── olx_clone.sql        # Dump SQL (manual import)
-├── LICENSE              # MIT
+│   ├── config.php            # Konfigurasi DB & auto-create schema
+│   ├── functions.php         # Helper functions
+│   └── header.php            # Navigasi & search bar
+├── sql/
+│   └── olx_clone.sql         # Dump SQL (manual import)
+├── uploads/                  # Folder upload gambar
+├── index.php                 # Halaman utama
+├── login.php                 # Login
+├── register.php              # Registrasi
+├── logout.php                # Logout
+├── create_ad.php             # Pasang iklan
+├── edit_ad.php               # Edit iklan
+├── detail.php                # Detail iklan
+├── myads.php                 # Dashboard iklan saya
+├── seeder.php                # Seeder data dummy
+├── LICENSE                   # MIT
 └── README.md
 ```
 

@@ -175,6 +175,52 @@ a {
     color: var(--primary) !important;
 }
 
+.user-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-greeting {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.btn-logout {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-500) !important;
+    padding: 4px 10px !important;
+    border-radius: var(--radius-sm) !important;
+    background: var(--gray-100);
+}
+
+.btn-logout:hover {
+    background: var(--gray-200) !important;
+    color: var(--red) !important;
+}
+
+.alert {
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.alert-error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
 /* ==================== CATEGORY NAV ==================== */
 
 .category-nav {
@@ -750,6 +796,21 @@ a {
 .info-table td:last-child {
     color: var(--gray-700);
     font-weight: 500;
+}
+
+.no-ads {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: var(--gray-500);
+    font-size: 15px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+}
+
+.no-ads a {
+    color: var(--primary);
+    font-weight: 600;
 }
 
 .badge-condition {
@@ -1570,4 +1631,140 @@ a {
     font-size: 13px;
     color: var(--gray-500);
     line-height: 1.6;
+}
+
+/* ==================== MY ADS PAGE ==================== */
+
+.myads-page {
+    padding: 28px 0 48px;
+    min-height: calc(100vh - 200px);
+}
+
+.myads-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.myads-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.myads-header .btn-submit {
+    padding: 10px 20px;
+    font-size: 13px;
+}
+
+.myads-table-wrap {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto;
+}
+
+.myads-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.myads-table th {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gray-200);
+    background: var(--gray-50);
+    white-space: nowrap;
+}
+
+.myads-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+    color: var(--gray-700);
+}
+
+.myads-table tr:last-child td {
+    border-bottom: none;
+}
+
+.myads-table tr:hover td {
+    background: var(--gray-50);
+}
+
+.myad-thumb {
+    width: 56px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    display: block;
+}
+
+.myads-table td a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.myads-table td a:hover {
+    text-decoration: underline;
+}
+
+.action-cell {
+    white-space: nowrap;
+}
+
+.btn-sm {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font);
+}
+
+.btn-edit {
+    background: var(--gray-100);
+    color: var(--gray-700);
+    margin-right: 6px;
+}
+
+.btn-edit:hover {
+    background: var(--gray-200);
+}
+
+.btn-hapus {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.btn-hapus:hover {
+    background: #fecaca;
+}
+
+.myads-empty {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.myads-empty p {
+    font-size: 16px;
+    color: var(--gray-500);
+    margin-bottom: 20px;
+}
+
+.myads-empty .btn-submit {
+    display: inline-block;
+    padding: 12px 28px;
 }

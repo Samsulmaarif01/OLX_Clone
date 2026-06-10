@@ -340,10 +340,16 @@ a {
     width: 56px;
     height: 56px;
     border-radius: 50%;
+    background: var(--gray-100);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+}
+
+.cat-icon .material-symbols-outlined {
+    font-size: 28px;
+    color: var(--primary);
 }
 
 /* ==================== ADS SECTION ==================== */

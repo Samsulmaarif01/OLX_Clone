@@ -71,7 +71,7 @@ if (isset($_GET['delete'])) {
                                     <?php if ($ad['image']): ?>
                                         <img src="<?php echo $ad['image']; ?>" class="myad-thumb" alt="thumb">
                                     <?php else: ?>
-                                        <img src="images/default.jpg" class="myad-thumb" alt="thumb">
+                                        <img src="https://placehold.co/400x300/002f34/23e5db?text=No+Image" class="myad-thumb" alt="thumb">
                                     <?php endif; ?>
                                 </td>
                                 <td><a href="detail.php?id=<?php echo $ad['id']; ?>"><?php echo htmlspecialchars($ad['title']); ?></a></td>

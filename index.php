@@ -14,6 +14,7 @@ $ads = get_ads($conn, 8);
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
 </head>
 <body>
 
@@ -44,9 +45,17 @@ $ads = get_ads($conn, 8);
                     <a href="categories.php" class="lihat-semua">Lihat semua &rarr;</a>
                 </div>
                 <div class="category-grid">
+                    <?php
+                    $icon_map = [
+                        'car' => 'directions_car', 'motorcycle' => 'motorcycle', 'phone' => 'smartphone',
+                        'home' => 'home', 'shirt' => 'checkroom', 'tv' => 'tv',
+                        'sports' => 'sports_soccer', 'kitchen' => 'kitchen', 'briefcase' => 'work',
+                        'office' => 'business',
+                    ];
+                    ?>
                     <?php foreach ($categories as $cat): ?>
                     <a href="category.php?id=<?php echo $cat['id']; ?>" class="cat-card">
-                        <div class="cat-icon"><?php echo strtoupper(substr($cat['name'], 0, 2)); ?></div>
+                        <div class="cat-icon"><span class="material-symbols-outlined"><?php echo $icon_map[$cat['icon']] ?? 'box'; ?></span></div>
                         <span><?php echo htmlspecialchars($cat['name']); ?></span>
                     </a>
                     <?php endforeach; ?>
@@ -68,7 +77,7 @@ $ads = get_ads($conn, 8);
                                 <?php if ($ad['image']): ?>
                                     <img src="<?php echo $ad['image']; ?>" alt="<?php echo htmlspecialchars($ad['title']); ?>">
                                 <?php else: ?>
-                                    <img src="images/default.jpg" alt="No image">
+                                    <img src="https://placehold.co/400x300/002f34/23e5db?text=No+Image" alt="No image">
                                 <?php endif; ?>
                             </div>
                             <div class="ad-body">

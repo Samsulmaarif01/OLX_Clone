@@ -69,11 +69,27 @@ foreach ($ads_data as $a) {
 mysqli_stmt_close($stmt_ad);
 
 // ===================== AD IMAGES =====================
-// Path gambar placeholder — ganti dengan file gambar sungguhan jika ada
 $placeholder_images = [
-    'uploads/placeholder1.jpg',
-    'uploads/placeholder2.jpg',
-    'uploads/placeholder3.jpg',
+    'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1567581937084-58a0893a4e9a?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&h=300&fit=crop',
 ];
 
 $stmt_img = mysqli_prepare($conn, "INSERT INTO ad_images (ad_id, image_path) VALUES (?, ?)");

@@ -50,7 +50,7 @@ $cat_name = get_category_name($conn, $ad['category_id']);
                             <?php if (count($images) > 0): ?>
                                 <img src="<?php echo $images[0]['image_path']; ?>" alt="<?php echo htmlspecialchars($ad['title']); ?>" id="mainImage">
                             <?php else: ?>
-                                <img src="images/default.jpg" alt="No image" id="mainImage">
+                                <img src="https://placehold.co/400x300/002f34/23e5db?text=No+Image" alt="No image" id="mainImage">
                             <?php endif; ?>
                             <?php if (count($images) > 1): ?>
                                 <button class="gallery-nav prev" onclick="changeImage(-1)">&#8249;</button>
@@ -175,7 +175,7 @@ $cat_name = get_category_name($conn, $ad['category_id']);
                             <?php if ($r['image']): ?>
                                 <img src="<?php echo $r['image']; ?>" alt="<?php echo htmlspecialchars($r['title']); ?>">
                             <?php else: ?>
-                                <img src="images/default.jpg" alt="No image">
+                                <img src="https://placehold.co/400x300/002f34/23e5db?text=No+Image" alt="No image">
                             <?php endif; ?>
                         </div>
                         <div class="ad-body">

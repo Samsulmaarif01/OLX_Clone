@@ -1227,3 +1227,347 @@ a {
 .form-terms .checkbox-label span a:hover {
     text-decoration: underline;
 }
+
+/* ==================== CREATE AD PAGE ==================== */
+
+.create-ad-page {
+    padding: 28px 0 48px;
+    background: var(--gray-100);
+}
+
+.create-ad-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 20px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .create-ad-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.create-ad-header {
+    margin-bottom: 20px;
+}
+
+.create-ad-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.create-ad-header p {
+    font-size: 14px;
+    color: var(--gray-500);
+}
+
+.create-ad-main {
+    min-width: 0;
+}
+
+/* Form Card */
+.form-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 16px;
+}
+
+.form-card h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.form-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.form-card-header h2 {
+    margin-bottom: 0;
+}
+
+.form-note {
+    font-size: 12px;
+    color: var(--gray-400);
+    font-weight: 400;
+}
+
+.form-card .form-group {
+    margin-bottom: 0;
+}
+
+.form-card .form-group + .form-group {
+    margin-top: 16px;
+}
+
+.form-card select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: var(--font);
+    outline: none;
+    background: var(--white);
+    color: var(--gray-700);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    cursor: pointer;
+}
+
+.form-card select:focus {
+    border-color: var(--primary);
+}
+
+.char-count {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 4px;
+}
+
+.form-card textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: var(--font);
+    outline: none;
+    resize: vertical;
+    min-height: 120px;
+    background: var(--white);
+    color: var(--gray-700);
+}
+
+.form-card textarea:focus {
+    border-color: var(--primary);
+}
+
+.form-card textarea::placeholder {
+    color: var(--gray-400);
+}
+
+.price-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.price-prefix {
+    position: absolute;
+    left: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-500);
+    pointer-events: none;
+}
+
+.price-input-wrap input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: var(--font);
+    outline: none;
+    background: var(--white);
+    color: var(--gray-700);
+}
+
+.price-input-wrap input:focus {
+    border-color: var(--primary);
+}
+
+.price-input-wrap input::placeholder {
+    color: var(--gray-400);
+}
+
+/* Photo Upload */
+.photo-upload-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.photo-upload-box {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed var(--gray-300);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--gray-50);
+}
+
+.photo-upload-box:hover {
+    border-color: var(--primary);
+    background: var(--gray-100);
+}
+
+.photo-upload-box span {
+    font-size: 11px;
+    color: var(--gray-400);
+    font-weight: 500;
+}
+
+.photo-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    border: 1.5px solid var(--gray-200);
+}
+
+.photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background 0.2s;
+}
+
+.photo-remove:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.photo-hint {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 10px;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-cancel,
+.btn-submit {
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: all 0.2s;
+}
+
+.btn-cancel {
+    background: var(--white);
+    color: var(--gray-600);
+    border: 1.5px solid var(--gray-300);
+}
+
+.btn-cancel:hover {
+    border-color: var(--gray-400);
+    background: var(--gray-50);
+}
+
+.btn-submit {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+}
+
+.btn-submit:hover {
+    background: var(--primary-light);
+}
+
+/* Create Ad Sidebar */
+.create-ad-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 84px;
+}
+
+@media (max-width: 900px) {
+    .create-ad-sidebar {
+        position: static;
+    }
+}
+
+.create-ad-sidebar .sidebar-card {
+    padding: 20px;
+}
+
+.create-ad-sidebar .sidebar-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 14px;
+}
+
+.tips-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tips-card ul li {
+    margin-bottom: 16px;
+}
+
+.tips-card ul li:last-child {
+    margin-bottom: 0;
+}
+
+.tips-card ul li strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 3px;
+}
+
+.tips-card ul li p {
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.5;
+}
+
+.info-card-sidebar p {
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.6;
+}

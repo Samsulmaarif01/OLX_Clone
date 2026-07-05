@@ -145,14 +145,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 OLX Clone. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
         function togglePassword(id, btn) {
             const input = document.getElementById(id);

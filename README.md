@@ -7,19 +7,19 @@ Tanpa framework, 100% vanilla PHP/HTML/CSS/JS.
 
 ### Sudah Tersedia
 - Registrasi & login pengguna (session-based, bcrypt)
-- Pasang iklan dengan upload gambar (max 8 foto, preview client-side)
+- Pasang iklan dengan upload gambar (max 8 foto, preview client-side) — **PDO**
 - Edit & hapus iklan milik sendiri
-- 10 kategori iklan
+- 10 kategori iklan + 31 lokasi dinamis
 - Halaman detail iklan dengan galeri gambar, breadcrumb, & iklan terkait
 - Dashboard kelola iklan ("My Ads")
-- Pencarian teks (halaman search, tinggal implementasi)
+- Pencarian teks dengan filter kategori
+- Show/hide password (toggle icon mata)
 - Responsive design (mobile-first)
 - Database auto-setup (dibuat otomatis saat pertama akses)
 - Seeder untuk data dummy
 
 ### Belum Tersedia
-- Halaman pencarian (`search.php`)
-- Filter per kategori (`category.php`)
+- Halaman filter per kategori (`category.php`)
 - Login sosial (Google/Facebook)
 - Reset password
 - Wishlist / Like
@@ -28,7 +28,7 @@ Tanpa framework, 100% vanilla PHP/HTML/CSS/JS.
 
 ## Database
 
-**4 tabel** (InnoDB, auto-created oleh `includes/config.php`):
+**5 tabel** (InnoDB, auto-created oleh `includes/config.php`):
 
 | Tabel | Keterangan |
 |-------|-----------|
@@ -36,6 +36,7 @@ Tanpa framework, 100% vanilla PHP/HTML/CSS/JS.
 | `categories` | id, name, icon — 10 kategori bawaan |
 | `ads` | id, user_id, category_id, title, description, price, location, created_at |
 | `ad_images` | id, ad_id, image_path |
+| `locations` | id, name — 31 kota besar Indonesia |
 
 Relasi: 1 user memiliki banyak iklan, 1 kategori memiliki banyak iklan, 1 iklan memiliki banyak gambar (cascade delete).
 
@@ -88,15 +89,17 @@ OLX_Clone/
 ├── post-ad.php               # Pasang iklan (PDO)
 ├── edit_ad.php               # Edit iklan
 ├── detail.php                # Detail iklan
+├── search.php                # Pencarian iklan
 ├── myads.php                 # Dashboard iklan saya
 ├── seeder.php                # Seeder data dummy
+├── AGENTS.md                 # Panduan untuk AI agent
 ├── LICENSE                   # MIT
 └── README.md
 ```
 
 ## Teknologi
 
-- **Backend:** PHP 8+ (native, mysqli)
+- **Backend:** PHP 8+ (native, mysqli + PDO)
 - **Frontend:** HTML5, CSS3 (custom properties, grid, flexbox), JavaScript vanilla
 - **Database:** MySQL
 - **Dependencies:** None (zero external packages)

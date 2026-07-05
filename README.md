@@ -85,7 +85,7 @@ OLX_Clone/
 ├── login.php                 # Login
 ├── register.php              # Registrasi
 ├── logout.php                # Logout
-├── create_ad.php             # Pasang iklan
+├── post-ad.php               # Pasang iklan (PDO)
 ├── edit_ad.php               # Edit iklan
 ├── detail.php                # Detail iklan
 ├── myads.php                 # Dashboard iklan saya

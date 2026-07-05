@@ -91,7 +91,7 @@ $ads = get_ads($conn, 8);
                         </a>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <p class="no-ads">Belum ada iklan. <a href="create_ad.php">Pasang iklan pertama</a></p>
+                        <p class="no-ads">Belum ada iklan. <a href="post-ad.php">Pasang iklan pertama</a></p>
                     <?php endif; ?>
                 </div>
             </div>

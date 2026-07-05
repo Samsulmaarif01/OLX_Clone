@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
@@ -47,6 +48,10 @@ $tables = [
         ad_id INT NOT NULL,
         image_path VARCHAR(255) NOT NULL,
         FOREIGN KEY (ad_id) REFERENCES ads(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB",
+    "CREATE TABLE IF NOT EXISTS locations (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL UNIQUE
     ) ENGINE=InnoDB"
 ];
 
@@ -63,6 +68,15 @@ mysqli_query($conn, "INSERT IGNORE INTO categories (id, name, icon) VALUES
 (4, 'Properti', 'home'), (5, 'Fashion', 'shirt'), (6, 'Elektronik', 'tv'),
 (7, 'Hobi & Olahraga', 'sports'), (8, 'Rumah Tangga', 'kitchen'),
 (9, 'Jasa & Lowongan', 'briefcase'), (10, 'Kantor & Industri', 'office')");
+
+mysqli_query($conn, "INSERT IGNORE INTO locations (name) VALUES
+('Jakarta Pusat'), ('Jakarta Selatan'), ('Jakarta Barat'), ('Jakarta Timur'), ('Jakarta Utara'),
+('Bandung'), ('Surabaya'), ('Medan'), ('Semarang'), ('Yogyakarta'),
+('Tangerang'), ('Tangerang Selatan'), ('Bekasi'), ('Depok'), ('Bogor'),
+('Malang'), ('Solo'), ('Denpasar'), ('Makassar'), ('Palembang'),
+('Batam'), ('Pekanbaru'), ('Bandar Lampung'), ('Padang'), ('Balikpapan'),
+('Manado'), ('Pontianak'), ('Samarinda'), ('Banjarmasin'), ('Mataram'),
+('Online')");
 
 date_default_timezone_set('Asia/Jakarta');
 

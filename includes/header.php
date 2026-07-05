@@ -22,7 +22,7 @@
         <nav class="header-nav">
             <?php if (is_logged_in()): ?>
                 <a href="myads.php">Iklan Saya</a>
-                <a href="create_ad.php" class="btn-pasang">Pasang Iklan</a>
+                <a href="post-ad.php" class="btn-pasang">Pasang Iklan</a>
                 <div class="user-dropdown">
                     <span class="user-greeting">Halo, <?php echo htmlspecialchars($_SESSION['user_name']); ?></span>
                     <a href="logout.php" class="btn-logout">Keluar</a>
@@ -30,7 +30,7 @@
             <?php else: ?>
                 <a href="login.php">Masuk</a>
                 <a href="register.php">Daftar</a>
-                <a href="create_ad.php" class="btn-pasang">Pasang Iklan</a>
+                <a href="post-ad.php" class="btn-pasang">Pasang Iklan</a>
             <?php endif; ?>
         </nav>
     </div>

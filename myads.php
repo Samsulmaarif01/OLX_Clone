@@ -48,7 +48,7 @@ if (isset($_GET['delete'])) {
         <div class="container">
             <div class="myads-header">
                 <h1>Iklan Saya</h1>
-                <a href="create_ad.php" class="btn-submit">+ Pasang Iklan Baru</a>
+                <a href="post-ad.php" class="btn-submit">+ Pasang Iklan Baru</a>
             </div>
 
             <?php if (count($ads) > 0): ?>
@@ -90,7 +90,7 @@ if (isset($_GET['delete'])) {
             <?php else: ?>
                 <div class="myads-empty">
                     <p>Kamu belum memiliki iklan.</p>
-                    <a href="create_ad.php" class="btn-submit">Pasang Iklan Sekarang</a>
+                    <a href="post-ad.php" class="btn-submit">Pasang Iklan Sekarang</a>
                 </div>
             <?php endif; ?>
         </div>

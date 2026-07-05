@@ -1,15 +1,44 @@
 <?php
-require_once 'includes/config.php';
+$DB_HOST = 'localhost';
+$DB_USER = 'root';
+$DB_PASS = '';
+$DB_NAME = 'olx_clone';
+
+try {
+    $pdo = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME;charset=utf8mb4", $DB_USER, $DB_PASS, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ]);
+} catch (PDOException $e) {
+    die('Koneksi database gagal: ' . $e->getMessage());
+}
+
+date_default_timezone_set('Asia/Jakarta');
+
 require_once 'includes/functions.php';
 
+if (!isset($_SESSION['user_id'])) {
+    ?>
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Redirecting...</title>
+        <script>
+            alert('Silakan login terlebih dahulu untuk memasang iklan.');
+            window.location.href = 'login.php';
+        </script>
+    </head>
+    <body></body>
+    </html>
+    <?php
+    exit;
+}
+
 $error = '';
-$success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!is_logged_in()) {
-        header('Location: login.php');
-        exit;
-    }
 
     $user_id = $_SESSION['user_id'];
     $category_id = (int) $_POST['category_id'];
@@ -25,12 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!is_numeric($price) || $price <= 0) {
         $error = 'Harga harus angka positif.';
     } else {
-        mysqli_begin_transaction($conn);
         try {
-            $stmt = mysqli_prepare($conn, "INSERT INTO ads (user_id, category_id, title, description, price, location) VALUES (?, ?, ?, ?, ?, ?)");
-            mysqli_stmt_bind_param($stmt, 'iissds', $user_id, $category_id, $title, $description, $price, $location);
-            mysqli_stmt_execute($stmt);
-            $ad_id = mysqli_insert_id($conn);
+            $pdo->beginTransaction();
+
+            $stmt = $pdo->prepare("INSERT INTO ads (user_id, category_id, title, description, price, location) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$user_id, $category_id, $title, $description, $price, $location]);
+            $ad_id = (int) $pdo->lastInsertId();
 
             if (!empty($_FILES['photos']['name'][0])) {
                 $upload_dir = 'uploads/';
@@ -46,25 +75,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $dest = $upload_dir . $filename;
 
                         if (move_uploaded_file($_FILES['photos']['tmp_name'][$i], $dest)) {
-                            $stmt = mysqli_prepare($conn, "INSERT INTO ad_images (ad_id, image_path) VALUES (?, ?)");
-                            mysqli_stmt_bind_param($stmt, 'is', $ad_id, $dest);
-                            mysqli_stmt_execute($stmt);
+                            $stmt = $pdo->prepare("INSERT INTO ad_images (ad_id, image_path) VALUES (?, ?)");
+                            $stmt->execute([$ad_id, $dest]);
                         }
                     }
                 }
             }
 
-            mysqli_commit($conn);
+            $pdo->commit();
             header('Location: detail.php?id=' . $ad_id);
             exit;
-        } catch (Exception $e) {
-            mysqli_rollback($conn);
+        } catch (PDOException $e) {
+            $pdo->rollBack();
             $error = 'Terjadi kesalahan, silakan coba lagi.';
         }
     }
 }
 
-$categories = get_categories($conn);
+$categories = $pdo->query("SELECT * FROM categories ORDER BY id")->fetchAll();
+$locations = $pdo->query("SELECT * FROM locations ORDER BY name")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -153,8 +182,13 @@ $categories = get_categories($conn);
                         <div class="form-card">
                             <h2>Lokasi</h2>
                             <div class="form-group">
-                                <label for="location">Tentukan lokasi barang</label>
-                                <input type="text" id="location" name="location" placeholder="Contoh: Jakarta Pusat" maxlength="100">
+                                <label for="location">Pilih lokasi barang</label>
+                                <select id="location" name="location" required>
+                                    <option value="">-- Pilih Lokasi --</option>
+                                    <?php foreach ($locations as $loc): ?>
+                                        <option value="<?php echo htmlspecialchars($loc['name']); ?>"><?php echo htmlspecialchars($loc['name']); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
 

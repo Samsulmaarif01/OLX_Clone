@@ -1,3 +1,4 @@
+<?php $search_q = isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>
 <header class="header">
     <div class="header-inner">
         <a href="index.php" class="logo">
@@ -13,9 +14,9 @@
         </div>
         <div class="header-search">
             <form action="search.php" method="GET">
-                <input type="text" name="q" placeholder="Cari di OLX Clone" autocomplete="off">
+                <input type="text" name="q" placeholder="Cari mobil, motor, HP, properti..." value="<?php echo $search_q; ?>" autocomplete="off">
                 <button type="submit">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </button>
             </form>
         </div>

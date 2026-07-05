@@ -108,33 +108,63 @@ a {
 .header-search form {
     display: flex;
     border: 2px solid var(--primary);
-    border-radius: var(--radius-sm);
+    border-radius: 40px;
     overflow: hidden;
+    background: var(--white);
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.header-search form:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 47, 52, 0.1);
 }
 
 .header-search input {
     flex: 1;
     border: none;
     outline: none;
-    padding: 10px 14px;
+    padding: 0 16px;
     font-size: 14px;
     font-family: var(--font);
-    background: var(--white);
+    background: transparent;
+    height: 44px;
+    min-width: 0;
+}
+
+.header-search input::placeholder {
+    color: var(--gray-400);
 }
 
 .header-search button {
     background: var(--primary);
     border: none;
-    padding: 0 16px;
+    width: 48px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
+    flex-shrink: 0;
 }
 
 .header-search button:hover {
     background: var(--primary-light);
+}
+
+.header-search button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Search bar responsive */
+@media (max-width: 900px) {
+    .header-search { max-width: 400px; }
+    .header-search input { font-size: 13px; }
+}
+
+@media (max-width: 640px) {
+    .header-search { max-width: none; }
+    .header-search form { border-radius: 24px; }
 }
 
 .header-nav {
@@ -803,6 +833,27 @@ a {
     color: var(--gray-700);
     font-weight: 500;
 }
+
+/* Search page */
+.search-info { padding: 24px 0 8px; }
+.search-info h1 { font-size: 20px; font-weight: 600; color: var(--gray-700); }
+.search-info h1 strong { color: var(--primary); }
+.search-count { font-size: 14px; color: var(--gray-500); margin-top: 4px; }
+
+.search-filters { display: flex; gap: 8px; padding-bottom: 16px; }
+.filter-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent); color: var(--primary); padding: 4px 12px;
+    border-radius: 20px; font-size: 13px; font-weight: 500;
+}
+.filter-remove { color: var(--primary); font-size: 16px; line-height: 1; text-decoration: none; font-weight: 700; }
+
+.search-empty {
+    text-align: center; padding: 60px 20px;
+}
+.search-empty .empty-icon { margin-bottom: 16px; }
+.search-empty h3 { font-size: 18px; color: var(--gray-700); margin-bottom: 8px; }
+.search-empty p { color: var(--gray-500); font-size: 14px; margin-bottom: 20px; }
 
 .no-ads {
     grid-column: 1 / -1;

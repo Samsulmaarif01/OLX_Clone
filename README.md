@@ -1,64 +1,96 @@
 # OLX Clone
 
-Platform jual beli online berbasis **PHP 8+** & **MySQL** — clone dari OLX Indonesia.  
-Tanpa framework, 100% vanilla PHP/HTML/CSS/JS.
+![PHP](https://img.shields.io/badge/PHP-8%2B-777BB4?logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-InnoDB-4479A1?logo=mysql)
+![License](https://img.shields.io/badge/Lisensi-MIT-green)
+
+Platform jual beli online terinspirasi dari [OLX Indonesia](https://www.olx.co.id) — dibangun dengan **PHP 8+ native**, **MySQL**, dan **nol dependensi eksternal**.
 
 ## Fitur
 
-### Sudah Tersedia
-- Registrasi & login pengguna (session-based, bcrypt)
-- Pasang iklan dengan upload gambar (max 8 foto, preview client-side) — **PDO**
-- Edit & hapus iklan milik sendiri
-- 10 kategori iklan + 31 lokasi dinamis
-- Halaman detail iklan dengan galeri gambar, breadcrumb, & iklan terkait
-- Dashboard kelola iklan ("My Ads")
-- Pencarian teks dengan filter kategori
-- Show/hide password (toggle icon mata)
-- Responsive design (mobile-first)
-- Database auto-setup (dibuat otomatis saat pertama akses)
-- Seeder untuk data dummy
+### Tersedia
+- **Autentikasi pengguna** — registrasi, login/logout, session-based, bcrypt
+- **Kelola iklan** — pasang (PDO), edit, hapus iklan dengan upload gambar (max 8 foto, format JPG/PNG/WebP)
+- **Pencarian** — pencarian teks pada judul dan deskripsi iklan
+- **Kategori** — 10 kategori bawaan dengan ikon Material
+- **Lokasi** — 31 kota besar Indonesia, terintegrasi dengan database
+- **Detail iklan** — galeri gambar, breadcrumb, iklan terkait, info penjual
+- **Dashboard "Iklan Saya"** — kelola seluruh iklan milik sendiri
+- **Toggle password** — tampilkan/sembunyikan password pada form login dan registrasi
+- **Tampilan responsif** — mobile-first, adaptif di semua ukuran layar
+- **Provisioning otomatis** — skema database dan data awal dibuat otomatis saat pertama diakses
+- **Seeder demo** — 5 pengguna + 20 iklan contoh dengan satu klik
 
 ### Belum Tersedia
-- Halaman filter per kategori (`category.php`)
-- Login sosial (Google/Facebook)
+- Halaman filter kategori
+- Login sosial (Google / Facebook)
 - Reset password
-- Wishlist / Like
+- Wishlist / Favorit
 - Integrasi WhatsApp
-- View counter
+- Counter pengunjung
 
-## Database
+## Teknologi
 
-**5 tabel** (InnoDB, auto-created oleh `includes/config.php`):
+| Lapisan | Teknologi |
+|---------|-----------|
+| **Backend** | PHP 8+ (native `mysqli` + `PDO`) |
+| **Frontend** | HTML5, CSS3 (custom properties, grid, flexbox), JavaScript vanilla |
+| **Database** | MySQL dengan InnoDB, foreign key, cascade delete |
+| **Dependensi** | Tidak ada — zero dependency, tanpa Composer, tanpa npm |
 
-| Tabel | Keterangan |
+## Skema Database
+
+5 tabel InnoDB yang dibuat otomatis oleh `includes/config.php` saat pertama kali akses.
+
+| Tabel | Deskripsi |
 |-------|-----------|
-| `users` | id, name, email, password (bcrypt), created_at |
-| `categories` | id, name, icon — 10 kategori bawaan |
-| `ads` | id, user_id, category_id, title, description, price, location, created_at |
-| `ad_images` | id, ad_id, image_path |
-| `locations` | id, name — 31 kota besar Indonesia |
+| `users` | Data pengguna terdaftar (password bcrypt) |
+| `categories` | 10 kategori iklan tetap dengan nama ikon Material |
+| `ads` | Iklan: judul, deskripsi, harga, lokasi |
+| `ad_images` | Gambar terkait iklan (cascade delete) |
+| `locations` | 31 kota besar Indonesia |
 
-Relasi: 1 user memiliki banyak iklan, 1 kategori memiliki banyak iklan, 1 iklan memiliki banyak gambar (cascade delete).
+**Relasi:**
+- Satu pengguna memiliki banyak iklan
+- Satu kategori memiliki banyak iklan
+- Satu iklan memiliki banyak gambar (semua cascade on delete)
 
-## Cara Menjalankan
+## Panduan Instalasi
 
 ### Prasyarat
-- PHP 8+
-- MySQL
-- Web server (Apache via Laragon/XAMPP)
 
-### Langkah
-1. Letakkan folder ini di `C:\laragon\www\` atau `C:\xampp\htdocs\`
-2. **(Otomatis)** Cukup akses `http://localhost/OLX_Clone` — database & tabel dibuat otomatis
-3. **(Manual)** Alternatif: import `sql/olx_clone.sql` ke phpMyAdmin
-4. Pastikan folder `uploads/` memiliki izin tulis
-5. Akses `http://localhost/OLX_Clone`
+- PHP 8.0+
+- MySQL 5.7+ / MariaDB 10.3+
+- Apache (Laragon, XAMPP, atau sejenisnya)
 
-### Isi Data Dummy
-Kunjungi `http://localhost/OLX_Clone/seeder.php`  
-Membuat 5 user & 20 iklan contoh. Semua password: `password123`
+### Langkah-langkah
 
-### Kredensial Test (setelah seeder)
+1. Letakkan folder ini di direktori web root:
+   ```
+   C:\laragon\www\OLX_Clone\
+   ```
+   atau
+   ```
+   C:\xampp\htdocs\OLX_Clone\
+   ```
+
+2. Pastikan folder `uploads/` memiliki izin tulis.
+
+3. Buka browser dan akses:
+   ```
+   http://localhost/OLX_Clone
+   ```
+   **Database dan tabel akan dibuat secara otomatis** — tidak perlu konfigurasi manual.
+
+4. *(Opsional)* Import `sql/olx_clone.sql` melalui phpMyAdmin sebagai alternatif.
+
+### Mengisi Data Demo
+
+Kunjungi `http://localhost/OLX_Clone/seeder.php` untuk mengisi database dengan:
+- 5 pengguna demo
+- 20 iklan contoh dengan gambar placeholder
+
+Semua akun demo menggunakan password: **`password123`**
 
 | Email | Password |
 |-------|----------|
@@ -68,41 +100,42 @@ Membuat 5 user & 20 iklan contoh. Semua password: `password123`
 | dewi@example.com | password123 |
 | rudi@example.com | password123 |
 
-## Struktur File
+## Struktur Proyek
 
 ```
 OLX_Clone/
 ├── assets/
 │   └── css/
-│       └── style.css         # Semua styling (CSS)
+│       └── style.css          # Seluruh styling CSS
 ├── includes/
-│   ├── config.php            # Konfigurasi DB & auto-create schema
-│   ├── functions.php         # Helper functions
-│   └── header.php            # Navigasi & search bar
+│   ├── config.php             # Koneksi DB & pembuatan skema otomatis
+│   ├── functions.php          # Fungsi bantu (helper)
+│   └── header.php             # Navigasi & search bar
 ├── sql/
-│   └── olx_clone.sql         # Dump SQL (manual import)
-├── uploads/                  # Folder upload gambar
-├── index.php                 # Halaman utama
-├── login.php                 # Login
-├── register.php              # Registrasi
-├── logout.php                # Logout
-├── post-ad.php               # Pasang iklan (PDO)
-├── edit_ad.php               # Edit iklan
-├── detail.php                # Detail iklan
-├── search.php                # Pencarian iklan
-├── myads.php                 # Dashboard iklan saya
-├── seeder.php                # Seeder data dummy
-├── AGENTS.md                 # Panduan untuk AI agent
-├── LICENSE                   # MIT
+│   └── olx_clone.sql          # Dump database (import manual)
+├── uploads/                   # Upload gambar iklan
+├── index.php                  # Beranda
+├── login.php                  # Masuk
+├── register.php               # Daftar
+├── logout.php                 # Keluar
+├── post-ad.php                # Pasang iklan (PDO)
+├── edit_ad.php                # Edit iklan
+├── detail.php                 # Detail iklan dengan galeri
+├── search.php                 # Hasil pencarian
+├── myads.php                  # Dashboard iklan saya
+├── seeder.php                 # Seeder data demo
+├── AGENTS.md                  # Panduan untuk AI agent
+├── LICENSE                    # Lisensi MIT
 └── README.md
 ```
 
-## Teknologi
+## Catatan
 
-- **Backend:** PHP 8+ (native, mysqli + PDO)
-- **Frontend:** HTML5, CSS3 (custom properties, grid, flexbox), JavaScript vanilla
-- **Database:** MySQL
-- **Dependencies:** None (zero external packages)
+- **Tanpa framework** — proyek ini sengaja dibuat dengan vanilla PHP. Tidak ada Composer, npm, atau build step.
+- **Zona waktu** disetel ke `Asia/Jakarta`.
+- **Pelaporan error** dikonfigurasi untuk mencatat tanpa menampilkan ke layar.
+- Seluruh halaman menggunakan file PHP flat di root — tanpa router atau pola MVC.
+- `header.php` digunakan oleh hampir semua halaman dan menyediakan navigasi, pencarian, serta UI yang adaptif terhadap status login.
 
 ## Lisensi
 

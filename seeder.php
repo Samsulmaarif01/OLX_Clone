@@ -69,32 +69,32 @@ foreach ($ads_data as $a) {
 mysqli_stmt_close($stmt_ad);
 
 // ===================== AD IMAGES =====================
-$placeholder_images = [
-    'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1567581937084-58a0893a4e9a?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&h=300&fit=crop',
+$ad_specific_images = [
+    'https://images.unsplash.com/photo-1613859492095-85d9944f09f6?w=400&h=300&fit=crop', // 0: Avanza (Mobil)
+    'https://images.unsplash.com/photo-1610768207795-72169abdf0d4?w=400&h=300&fit=crop', // 1: Civic (Mobil)
+    'https://images.unsplash.com/photo-1624950207310-a0d766111a24?w=400&h=300&fit=crop', // 2: NMAX (Motor)
+    'https://images.unsplash.com/photo-1650807486058-2dd55fa78831?w=400&h=300&fit=crop', // 3: Vario (Motor)
+    'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=400&h=300&fit=crop', // 4: iPhone (HP)
+    'https://images.unsplash.com/photo-1709744722656-9b850470293f?w=400&h=300&fit=crop', // 5: S24 (HP)
+    'https://images.unsplash.com/photo-1778854097573-f478f8ef60a7?w=400&h=300&fit=crop', // 6: Redmi (HP)
+    'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=400&h=300&fit=crop', // 7: Kontrakan (Rumah)
+    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=300&fit=crop', // 8: Rumah Subsidi (Rumah)
+    'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=300&fit=crop', // 9: Jaket Kulit
+    'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=300&fit=crop', // 10: Sepatu Nike
+    'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop', // 11: TV
+    'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&h=300&fit=crop', // 12: Kulkas
+    'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&h=300&fit=crop', // 13: Sepeda
+    'https://images.unsplash.com/photo-1721394749382-223a18ce8bb9?w=400&h=300&fit=crop', // 14: Treadmill
+    'https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=400&h=300&fit=crop', // 15: Meja Makan
+    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop', // 16: Sofa Bed
+    'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop', // 17: Les Privat (Buku/Belajar)
+    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop', // 18: Desain Grafis (Komputer/Desain)
+    'https://images.unsplash.com/photo-1650094980833-7373de26feb6?w=400&h=300&fit=crop', // 19: Mesin Fotocopy (Printer)
 ];
 
 $stmt_img = mysqli_prepare($conn, "INSERT INTO ad_images (ad_id, image_path) VALUES (?, ?)");
-foreach ($ad_ids as $ad_id) {
-    $img = $placeholder_images[array_rand($placeholder_images)];
+foreach ($ad_ids as $index => $ad_id) {
+    $img = $ad_specific_images[$index];
     mysqli_stmt_bind_param($stmt_img, 'is', $ad_id, $img);
     mysqli_stmt_execute($stmt_img);
 }
